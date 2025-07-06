@@ -1,0 +1,161 @@
+<nav class="navbar navbar-expand-lg sticky-top bg-dark" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#" style="color:#f4f1de;">Arcadia Camps</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div data-bs-theme="dark" class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          <a class="nav-link active" style="color: #f4f1de;"  href="/campgrounds">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: #f4f1de;" href="/campgrounds">Camps</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" style="color: #f4f1de;" data-bs-toggle="dropdown" aria-expanded="false">
+            Options
+          </a>
+          <ul class="dropdown-menu bg-dark" style="background-color: #000;">
+            <li><a class="dropdown-item" href="/campgrounds/new">Add Camp</a></li>
+            <li><a class="dropdown-item" style="color: #f4f1de;" href="/campgrounds">Edit Camp</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#" style="color: #f4f1de;">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link "  style="color: #f4f1de;" >Link</a>
+        </li>
+      </ul>
+      <div id="spotlight-search">
+  <style>
+    #spotlight-search {
+      --bg-color: #1e1e2f;
+      --search-bg: #2a2a3d;
+      --text-color: #fff;
+      --placeholder: #999;
+      --border-color: #444;
+      --radius: 12px;
+    }
+
+    #spotlight-search body,
+    #spotlight-search * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    #spotlight-search .shortcut-hint {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--search-bg);
+      padding: 0.4rem 0.8rem;
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      color: var(--text-color);
+      opacity: 0.6;
+      z-index: 1001;
+    }
+
+    #spotlight-search .spotlight-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(5px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    #spotlight-search .spotlight {
+      background: var(--search-bg);
+      padding: 1rem 1.5rem;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      width: 90%;
+      max-width: 600px;
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--border-color);
+      transform: translateY(-20px);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    #spotlight-search .spotlight.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    #spotlight-search input {
+      background: transparent;
+      border: none;
+      outline: none;
+      width: 100%;
+      font-size: 1.1rem;
+      color: var(--text-color);
+      caret-color: white;
+    }
+
+    #spotlight-search input::placeholder {
+      color: var(--placeholder);
+    }
+  </style>
+
+  <div class="shortcut-hint">Press <kbd>/</kbd> to search</div>
+
+  <div class="spotlight-overlay" id="spotlight-overlay">
+    <div class="spotlight" id="spotlight-box">
+      <form action="">
+        <input type="text" placeholder="Search anything..." id="spotlight-input" />
+      </form>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const overlay = document.querySelector('#spotlight-search #spotlight-overlay');
+      const input = document.querySelector('#spotlight-search #spotlight-input');
+      const box = document.querySelector('#spotlight-search #spotlight-box');
+
+      function openSpotlight() {
+        overlay.style.display = 'flex';
+        setTimeout(() => {
+          box.classList.add('active');
+          input.focus();
+        }, 100);
+      }
+
+      function closeSpotlight() {
+        box.classList.remove('active');
+        overlay.style.display = 'none';
+        input.value = '';
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === '/' && document.activeElement !== input) {
+          e.preventDefault();
+          openSpotlight();
+        }
+        if (e.key === 'Escape') {
+          closeSpotlight();
+        }
+      });
+
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeSpotlight();
+      });
+    })();
+  </script>
+</div>
+
+      <!-- <form class="d-flex" role="search">
+        <input style="background-color: #fff;" class="form-control me-3" type="search" placeholder="Search" aria-label="Search"/>
+        <button class="btn btn-outline-info" type="Search">Search</button>
+      </form> -->
+    </div>
+  </div>
+</nav>

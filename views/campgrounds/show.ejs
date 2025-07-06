@@ -1,0 +1,99 @@
+<% layout('./layouts/boilerplate.ejs') %>
+  <!-- this is the second card -->
+  <div class="card mb-5 mx-auto" style="max-width: 1200px; min-height: 400px;">
+    <div class="row g-0 h-100">
+      <!-- Image section -->
+      <div class="col-md-5">
+        <a href="<%= campground.image %>" data-lightbox="camp-<%= campground._id %>">
+          <img src="<%= campground.image %>" class="img-fluid h-100 rounded-start" style="object-fit: cover;"
+            alt="Campground Image">
+        </a>
+      </div>
+
+      <div class="col-md-7 d-flex flex-column mb-3 mt-3">
+        <div class="card-body">
+          <h3 class="card-title fs-2">
+            <%=campground.title%>
+          </h3>
+          <p class="card-text fs-3">- <%=campground.location%>.</p>
+          <p class="card-text fs-5">
+            <%=campground.description%>.
+          </p>
+        </div>
+
+        <div class="mt-3 mb-3" style="font-size: 17px;">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Perks: Stargazing experiences, Snow World, Water Park, Food.</li>
+            <li class="list-group-item">Capacity : 5</li>
+            <li class="list-group-item">Price : <del style="margin-right: 9px;">$<%=Math.floor(Math.random()*1000+1)%>
+              </del> $<%=campground.price%>! </li>
+          </ul>
+        </div>
+
+        <div class="card-body mt-auto">
+          <a href="/campgrounds" class="card-link btn btn-outline-success">Book Camp</a>
+          <a href="/campgrounds/edit/<%=campground._id%>" class="card-link btn btn-outline-primary">Edit Camp</a>
+          <a href="/campgrounds/delete/<%= campground._id%>" class="card-link btn btn-outline-danger">Delete Camp</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer text-body-secondary" style="font-size: 17.2px;">
+      Total Bookings: <%=Math.floor(Math.random()*5000 + 100)%>
+        <span style="margin-left: 10px;"> Available : <%=Math.floor(Math.random()*100+1)%>
+        </span>
+    </div>
+
+
+
+  </div>
+  </div>
+
+  <div class="col-6 offset-0 mt-3">
+    <div class="card w-70">
+      <div class="card-body">
+        <h5 class="card-title">Post Review</h5>
+        <form action="/campgrounds/<%=campground._id%>/reviews" class="mb-3 validated-form" method="post" novalidate>
+          <label for="body" class="form-label">Review</label>
+          <input type="text" class="form-control" id="body" name="body" placeholder="enter a review" required>
+          <label for="rating" class="form-label">Rating</label>
+          <input type="text" class="form-control" id="rating" name="rating" placeholder="rate here" required>
+          <button class="btn btn-success mt-3" type="submit">Post Review</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 offset-0 mt-5">
+    <div class="card">
+      <div class="card-header">
+        <ul class="nav nav-pills card-header-pills">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Reviews</a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body">
+        <% for (let i=campground.reviews.length-1; i>=0; i--) {%>
+          <% let review=campground.reviews[i] %>
+            <div>
+              <div class="card w-50 mb-1">
+                <div class="card-body">
+                  <h5 class="card-title"><a href="">@bhimanshu</a></h5>
+                  <p class="mt-1 mb-1"><span>&#9733;</span>
+                    <%=review.rating%>
+                  </p>
+                  <p class="card-text mb-0 mt-0">- <%=review.body%><b>.</b></p>
+                  <a class="icon-link icon-link-hover link-danger link-underline-danger link-underline-opacity-25"
+                    href="/campgrounds/<%=campground._id%>/reviews/delete/<%=review._id%>">
+                    Delete review
+                    <svg xmlns="http://www.w3.org/2000/svg" class="bi" viewBox="0 0 16 16" aria-hidden="true">
+                      <path
+                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <%}%>
+      </div>
+    </div>

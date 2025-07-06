@@ -1,0 +1,53 @@
+<% layout('./layouts/boilerplate.ejs')%>
+    <style>
+        .smallfont {
+            font-size: 13px;
+        }
+    </style>
+    <div class="row">
+        <h2 class="text-center">Add New Campground</h2>
+        <div class="col-6 offset-3">
+            <form action="/campgrounds/new" method="post" style="font-size: 20px;" novalidate class="validated-form">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title
+                    </label>
+                    <input class="form-control" type="text" id="title" name="title" required>
+                    <div class="valid-feedback smallfont">Looks good!</div>
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location</label>
+                    <input type="text" name="location" id="location" class="form-control" required>
+                    <div class="valid-feedback smallfont">Looks good!</div>
+                </div>
+                <div class="mb-3">
+                    <label for="basic-url" class="form-label">Image URL</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon3"
+                            style="font-size: 17px;">https://example.com/users/</span>
+                        <input type="text" class="form-control" id="basic-url"
+                            aria-describedby="basic-addon3 basic-addon4" name="image" required>
+                        <div class="valid-feedback smallfont">Looks good!</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"
+                        required></textarea>
+                    <div class="valid-feedback smallfont">Looks good!</div>
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">$</span>
+                        <input type="text" id="price" class="form-control" aria-label="Amount (to the nearest dollar)"
+                            name="price" required>
+                        <span class="input-group-text">.00</span>
+                        <div class="valid-feedback smallfont">Looks good!</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-success" type="submit">Add Campground</button>
+                </div>
+            </form>
+        </div>
+    </div>

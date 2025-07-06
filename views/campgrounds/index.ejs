@@ -1,0 +1,33 @@
+<% layout('./layouts/boilerplate.ejs') %>
+<!-- this passes the current content into the boilerplate ejs file and that file is rendered as default for all -->
+<div class="h4 pb-2 mb-4 text-dark border-bottom border-dark">
+<h3><a href="/campgrounds/new" class="btn btn-outline-success btn-lg">Add Arcadian Campground</a></h3>
+</div>
+    
+    <ol>
+        <% for (let campground of campgrounds) {%>
+            <div class="card mb-3 text-bg-light">
+                <div class="row">
+                    <div class="col-md-4" width="100%">
+                        <img class="img-fluid" alt="" src="<%=campground.image%>" style="border-radius: 5px;">
+                        <!-- <li><a href="/campgrounds/<%= campground._id %>"> <%=  %></li> -->
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body" style="font-size: 17px;">
+                            <h5 class="card-title" style="font-size: 23px;"><%= campground.title %></h5>
+                            <p class="card-text"><%= campground.description %></p>
+                            <p class="card-text">
+                                <large class="text-muted">- <%= campground.location %></large></p>
+                            
+                            <p class="card-text"><a href="/campgrounds/<%=campground._id%>" class="btn btn-outline-primary">View <%= campground.title %></a></p>
+                            <p class="card-text"><a class="btn btn-outline-danger" href="/campgrounds/delete/<%=campground._id%>">Delete</a> </p> 
+                            <p class="card-text"><a class="btn btn-outline-info" href="/campgrounds/edit/<%=campground._id%>">Edit</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% }%>
+    </ol>
+    <div class="mb-4"></div>
+    <!-- <div> -->
+            <!-- </div> -->

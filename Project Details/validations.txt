@@ -1,0 +1,12 @@
+# validations
+
+* here currently we only used the client side validations, like we made sure that no input field is submitted empty using the "required" and
+bootstrap classes, and when and error occurred we handled them using the error handling middleware
+* but there is a bug, we have only checked the client side validations using the form required, but what if the data is submitted through another 
+means like postma, then it is not mandatory that the postman follow form rules, and this might pass the form so we have to validate
+* now we have to make sure that the client give right inputs like datatypes so that our server does not break and send an error message
+for this we have to do some server side validations using the a validator library, where we validate the form data posted against a validator
+if the submitted data is correctly validated then continue
+* instead we can use our own validators like, if one of the data is not given then do this, if this data is not submitted do this but this does not 
+set well while scaling
+

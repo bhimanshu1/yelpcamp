@@ -1,0 +1,48 @@
+<%layout('. /layouts/boilerplate')%>
+    <div class="row">
+        <h2 class="text-center">Edit Campground</h2>
+        <div class="col-6 offset-3">
+            <form action="/campgrounds/edited/<%=campground._id%>" method="post" style="font-size: 20px;"
+                class="validated-form" novalidate>
+
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title
+                    </label>
+                    <input class="form-control" type="text" id="title" name="title" value="<%= campground.title%>"
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location</label>
+                    <input type="text" name="location" id="location" class="form-control"
+                        value="<%= campground.location%>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="basic-url" class="form-label">Image URL</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon3"
+                            style="font-size: 17px;">https://example.com/users/</span>
+                        <input type="text" class="form-control" id="basic-url"
+                            aria-describedby="basic-addon3 basic-addon4" name="image" value="<%= campground.image%>"
+                            required>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"
+                        required><%=campground.description%></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">$</span>
+                        <input type="text" id="price" class="form-control" aria-label="Amount (to the nearest dollar)"
+                            name="price" value="<%=campground.price%>" required>
+                        <span class="input-group-text">.00</span>
+                    </div>
+                </div>
+                <div class="mb-4 mt-4">
+                    <button class="btn btn-info" type="submit" style="color: aliceblue;">Update Campground</button>
+                </div>
+            </form>
+        </div>
+    </div>
